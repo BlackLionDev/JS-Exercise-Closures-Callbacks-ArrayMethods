@@ -186,7 +186,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
 function getFullNames(/* CODE HERE */runners) {
   /* CODE HERE */
   const names = [];
-  runners.forEach(function())
+  runners.forEach(function(runners) {
+    return names.push(`${runners.last_name}, ${runners.first_name}`);
+  });
+  return names;
 }
 
 /**
@@ -201,8 +204,11 @@ function getFullNames(/* CODE HERE */runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(/* CODE HERE */runners) {
   /* CODE HERE */
+  return runners.map(function(runners){
+    return `${runners.first_name}`.toUpperCase();
+  });
 }
 
 /**
@@ -218,8 +224,12 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(/* CODE HERE */runners, tShirtSize) {
   /* CODE HERE */
+  return runners.filter(function(runners){
+    return runners.shirt_size === tShirtSize;
+  })
+  
 }
 
 /**
@@ -232,8 +242,11 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(/* CODE HERE */runners) {
   /* CODE HERE */
+  return runners.reduce(function (accumulator, runners) {
+    return accumulator + runners.donation;
+  }, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -254,10 +267,14 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
+  var count = 0;
   function counter() {
-    ++count
+    count++
   }
+  counter();
+  counter();
+  counter();
+  return counter;
   // BROKEN CODE ENDS
 }
 
